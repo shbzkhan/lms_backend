@@ -50,7 +50,7 @@ exports.updateSection = async(req, res)=>{
             })
         }
         //update data
-        const section = await Section.findByIdAndUpdate(sectionId,{sectionName},{new:true})
+        await Section.findByIdAndUpdate(sectionId,{sectionName},{new:true})
         
         //res return
         return res.status(200).json({
@@ -79,13 +79,15 @@ exports.deleteSection = async(req, res)=>{
             })
         }
         //delete data
-        const section = await Section.findByIdAndDelete(sectionId)
+        await Section.findByIdAndDelete(sectionId)
         
         //res return
         return res.status(200).json({
             success: true,
             message: "Section deleted successfully"
         })
+
+
     } catch (error) {
         return res.status(500).json({
             success: false,
